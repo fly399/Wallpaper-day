@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta charset="utf-8"/>
+
+  <title>Wallpaper day</title>
+  
+  <meta name="description" content="Wallpaper day"/>
+  <meta name="viewport" content="width=device-width"/>
+  <script src="WebServers/home/site.test/dropzone.js"></script>
+  <script src="Dropbox/Сайтец/WebPainter/backbone.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js">
+  </script>
+</head>
+<body style="background-color:#FFFFFF; background-position:top left; background-repeat:repeat; height:808px; width:888px;">
+<div style="text-align:left;">
+   <input type="text" value="URL" title="URL" name="TextEdit1" maxlength="200"  style="overflow:hidden; position:absolute; left:15px; top:12px; width:509px; height:92px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:28pt; font-family:Arial; color:#000000;" id="wsp_49c9c51c" >
+   <input name="Button1" type="submit" value="Send" title=""  style="overflow:hidden; position:absolute; left:18px; top:314px; width:509px; height:81px; font-size:10pt; font-family:Arial, Helvetica, sans-serif; color:#000000; " id="addURL" onclick="myFunction()" >
+   <img alt="hui" width="340" height="604" id="imageViewServer" align="left" style="overflow:hidden; position:absolute; left:539px; top:10px; width:340px; height:604px; background:none; " title="" />
+   <input type="text" value="0" title="Likes" name="TextEdit1" maxlength="200"  style="overflow:hidden; position:absolute; left:16px; top:113px; width:509px; height:92px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:28pt; font-family:Arial; color:#000000; " id="wsp_4bfff64d" >
+   <input type="text" value="Text" title="Text" name="TextEdit1" maxlength="200"  style="overflow:hidden; position:absolute; left:17px; top:213px; width:509px; height:92px; background-color:#FFFFFF; border: 1px solid #A0A0A0; font-size:28pt; font-family:Arial; color:#000000; " id="wsp_365f079f" >
+</div>
+<script type="text/javascript">
+
+Parse.initialize("F90JWpXgrmVT6BP2IXQhcOCpVEXCE0vQxCTuTQDR", "gIHV6fuLhKTk3Kp1s6gGX3Kp1beTvYvsSJdJ8LPz");
+   
+   var GameScore = Parse.Object.extend("Production");
+   var query = new Parse.Query(GameScore);
+query.first( {
+  success: function(gameScore) {
+	  var image = gameScore.get("image");
+	  //alert(image);
+	  /*
+	  var img = document.createElement("img");
+      img.src = image;
+	  img.width = 640;
+	  img.height = 1136;
+	  document.body.appendChild(img);//fakjdsnfjlherbgr
+	  */
+
+   var imageViewServer =  document.getElementById('imageViewServer');
+	  imageViewServer.src = image;
+    // The object was retrieved successfully.
+  },
+  error: function(object, error) {
+    // The object was not retrieved successfully.
+    // error is a Parse.Error with an error code and message.
+  }
+});
+</script>
+
+<script>
+/*
+  document.getElementById("files").onchange = function () {
+   var reader = new FileReader();
+reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        //document.getElementById("image").src = e.target.result; imageViewUpload
+		
+   var imageViewServer =  document.getElementById('imageViewUpload');
+	  imageViewServer.src = e.target.result;
+	//alert(e.target.result.src);
+    };
+// read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+*/
+</script>	
+
+<script>
+/*
+	var GameScore = Parse.Object.extend("Test2");
+    var gameScore = new GameScore();
+
+gameScore.set("image", 1337);
+gameScore.set("likes", "Sean Plott");
+gameScore.set("Text", false);
+
+gameScore.save(null, {
+  success: function(gameScore) {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + gameScore.id);
+  },
+  error: function(gameScore, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});*/
+
+function myFunction() {
+	var urlTextField = document.getElementById("wsp_49c9c51c");
+	var likesTestField = document.getElementById("wsp_4bfff64d");  
+            Parse.initialize("F90JWpXgrmVT6BP2IXQhcOCpVEXCE0vQxCTuTQDR", "gIHV6fuLhKTk3Kp1s6gGX3Kp1beTvYvsSJdJ8LPz");
+	var object = Parse.Object.extend("Test");
+    var gs = new GameScore();
+
+gs.set("image",String(urlTextField.value));
+gs.set("likes", parseInt(likesTestField.value));
+
+gs.save(null, {
+  success: function(gs) {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + gameScore.id);
+  },
+  error: function(gs, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});
+}
+</script>
+</body>
+
+</html>
